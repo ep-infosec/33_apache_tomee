@@ -1,0 +1,131 @@
+= Arquillian Persistence Extension
+:index-group: Unrevised
+:jbake-type: page
+:jbake-status: published
+
+Una muestra que muestra cómo usar TomEE, Arquillian y su extensión de persistencia y JakartaEE 9.
+
+Tenga en cuenta que solo funciona con un contenedor integrado (tomee-embedded).
+
+# Ejecutando (salida)
+
+```
+    -------------------------------------------------------
+	T E S T S
+	-------------------------------------------------------
+	Running org.superbiz.arquillian.test.persistence.PersistenceTest
+	SEVERE: Unable to initialize agent: null
+	INFO: Starting TomEE from: C:\Users\zotyi\Documents\NetBeansProjects\tomee\examples\arquillian-jpa\target\apache-tomee-embedded
+    INFO: Initializing ProtocolHandler ["http-nio-49324"]
+    INFO: Starting service [Tomcat]
+    INFO: Starting Servlet engine: [Apache Tomcat/10.0.22]
+	INFO: Starting ProtocolHandler ["http-nio-49324"]
+	INFO: Using 'openejb.jdbc.datasource-creator=org.apache.tomee.jdbc.TomEEDataSourceCreator'
+	INFO: ********************************************************************************
+	INFO: OpenEJB http://tomee.apache.org/
+	INFO: Startup: Thu Jun 30 21:45:55 CEST 2022
+	INFO: Copyright 1999-2021 (C) Apache TomEE Project, All Rights Reserved.
+	INFO: Version: 9.0.0-M9-SNAPSHOT
+	INFO: Build date: 20220630
+	INFO: Build time: 06:28
+	INFO: ********************************************************************************
+	INFO: openejb.home = C:\Users\zotyi\Documents\NetBeansProjects\tomee\examples\arquillian-jpa\target\apache-tomee-embedded
+	INFO: openejb.base = C:\Users\zotyi\Documents\NetBeansProjects\tomee\examples\arquillian-jpa\target\apache-tomee-embedded
+	INFO: Created new singletonService org.apache.openejb.cdi.ThreadSingletonServiceImpl@7b122839
+	INFO: Succeeded in installing singleton service
+	INFO: TomEE configuration file is 'C:\Users\zotyi\Documents\NetBeansProjects\tomee\examples\arquillian-jpa\target\apache-tomee-embedded\conf\openejb.xml'
+	INFO: Configuring Service(id=Tomcat Security Service, type=SecurityService, provider-id=Tomcat Security Service)
+	INFO: Configuring Service(id=Default Transaction Manager, type=TransactionManager, provider-id=Default Transaction Manager)
+	INFO: Configuring Service(id=demoDataSource, type=Resource, provider-id=Default JDBC Database)
+	INFO: Using 'openejb.system.apps=false'
+	INFO: Using 'openejb.deployments.classpath=false'
+	INFO: Creating TransactionManager(id=Default Transaction Manager)
+	INFO: Creating SecurityService(id=Tomcat Security Service)
+	INFO: Creating Resource(id=demoDataSource)
+	INFO: Using 'openejb.servicemanager.enabled=false'
+	INFO: Extracting jar: C:\Users\zotyi\Documents\NetBeansProjects\tomee\examples\arquillian-jpa\target\arquillian-test-working-dir\0\UserPersistenceTest.war
+	INFO: Extracted path: C:\Users\zotyi\Documents\NetBeansProjects\tomee\examples\arquillian-jpa\target\arquillian-test-working-dir\0\UserPersistenceTest
+	INFO: using default host: localhost
+	INFO: ------------------------- localhost -> /UserPersistenceTest
+	INFO: Using 'openejb.session.manager=org.apache.tomee.catalina.session.QuickSessionManager'
+	WARNING: An illegal reflective access operation has occurred
+	WARNING: Illegal reflective access by org.apache.openejb.ClassLoaderUtil (file:/C:/Users/zotyi/.m2/repository/org/apache/tomee/openejb-core/9.0.0-M9-SNAPSHOT/openejb-core-9.0.0-M9-SNAPSHOT.jar) to field java.net.URLClassLoader.ucp
+	WARNING: Please consider reporting this to the maintainers of org.apache.openejb.ClassLoaderUtil
+	WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+	WARNING: All illegal access operations will be denied in a future release
+	INFO: Configuring enterprise application: C:\Users\zotyi\Documents\NetBeansProjects\tomee\examples\arquillian-jpa\target\arquillian-test-working-dir\0\UserPersistenceTest
+	INFO: Auto-deploying ejb TransactionBean: EjbDeployment(deployment-id=TransactionBean)
+	INFO: Configuring Service(id=Default Stateless Container, type=Container, provider-id=Default Stateless Container)
+	INFO: Auto-creating a container for bean TransactionBean: Container(type=STATELESS, id=Default Stateless Container)
+	INFO: Creating Container(id=Default Stateless Container)
+	INFO: Configuring Service(id=Default Managed Container, type=Container, provider-id=Default Managed Container)
+	INFO: Auto-creating a container for bean UserPersistenceTest.Comp824348035: Container(type=MANAGED, id=Default Managed Container)
+	INFO: Creating Container(id=Default Managed Container)
+	INFO: Using directory C:\Users\zotyi\AppData\Local\Temp for stateful session passivation
+	INFO: Configuring PersistenceUnit(name=demoApplicationPU)
+	INFO: Auto-creating a Resource with id 'demoDataSourceNonJta' of type 'DataSource' for 'demoApplicationPU'.
+	INFO: Configuring Service(id=demoDataSourceNonJta, type=Resource, provider-id=demoDataSource)
+	INFO: Creating Resource(id=demoDataSourceNonJta)
+	INFO: Adjusting PersistenceUnit demoApplicationPU <non-jta-data-source> to Resource ID 'demoDataSourceNonJta' from 'null'
+	INFO: Enterprise application "C:\Users\zotyi\Documents\NetBeansProjects\tomee\examples\arquillian-jpa\target\arquillian-test-working-dir\0\UserPersistenceTest" loaded.
+	INFO: Assembling app: C:\Users\zotyi\Documents\NetBeansProjects\tomee\examples\arquillian-jpa\target\arquillian-test-working-dir\0\UserPersistenceTest
+	INFO: Ignoring XML Configuration for validator org.apache.bval.jsr.ConfigurationImpl
+	INFO: JAVA AGENT NOT INSTALLED. The JPA Persistence Provider requested installation of a ClassFileTransformer which requires a JavaAgent.  See http://tomee.apache.org/javaagent.html
+	INFO: OpenJPA dynamically loaded a validation provider.
+	INFO: Starting OpenJPA 3.2.2
+	INFO: Using dictionary class "org.apache.openjpa.jdbc.sql.HSQLDictionary" (HSQL Database Engine 2.6.0 ,HSQL Database Engine Driver 2.6.0).
+	INFO: Connected to HSQL Database Engine version 2.6 using JDBC driver HSQL Database Engine Driver version 2.6.0.
+	INFO: SELECT SEQUENCE_SCHEMA, SEQUENCE_NAME FROM INFORMATION_SCHEMA.SYSTEM_SEQUENCES --> 0ms
+	INFO: CREATE TABLE User (id BIGINT NOT NULL, name VARCHAR(255), PRIMARY KEY (id)) --> 0ms
+	WARNING: Creating subclass for "[class org.superbiz.arquillian.persistence.User]". This means that your application will be less efficient and will consume more memory than it would if you ran the OpenJPA enhancer. Additionally, lazy loading will not be available for one-to-one and many-to-one persistent attributes in types using field access; they will be loaded eagerly instead.
+	jún. 30, 2022 9:46:03 DU. org.apache.openejb.assembler.classic.ReloadableEntityManagerFactory createDelegate
+	INFO: PersistenceUnit(name=demoApplicationPU, provider=org.apache.openjpa.persistence.PersistenceProviderImpl) - provider time 1103ms
+	INFO: Jndi(name=TransactionBeanLocal) --> Ejb(deployment-id=TransactionBean)
+	INFO: Jndi(name=global/UserPersistenceTest/TransactionBean!org.superbiz.arquillian.test.persistence.PersistenceTest$Caller) --> Ejb(deployment-id=TransactionBean)
+	INFO: Jndi(name=global/UserPersistenceTest/TransactionBean) --> Ejb(deployment-id=TransactionBean)
+	INFO: Existing thread singleton service in SystemInstance(): org.apache.openejb.cdi.ThreadSingletonServiceImpl@7b122839
+	INFO: Some Principal APIs could not be loaded: org.eclipse.microprofile.jwt.JsonWebToken out of org.eclipse.microprofile.jwt.JsonWebToken not found
+	INFO: OpenWebBeans Container is starting...
+	INFO: Adding OpenWebBeansPlugin : [CdiPlugin]
+	INFO: All injection points were validated successfully.
+	INFO: OpenWebBeans Container has started, it took 758 ms.
+	INFO: Created Ejb(deployment-id=TransactionBean, ejb-name=TransactionBean, container=Default Stateless Container)
+	INFO: Started Ejb(deployment-id=TransactionBean, ejb-name=TransactionBean, container=Default Stateless Container)
+	INFO: Deployed Application(path=C:\Users\zotyi\Documents\NetBeansProjects\tomee\examples\arquillian-jpa\target\arquillian-test-working-dir\0\UserPersistenceTest)
+	INFO: Using org.apache.myfaces.ee.MyFacesContainerInitializer
+	INFO: Added FacesServlet with mappings=[/faces/*, *.jsf, *.faces, *.xhtml]
+	INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+	INFO: Installing <listener>org.apache.myfaces.webapp.StartupServletContextListener</listener>
+	INFO: Reading standard config META-INF/standard-faces-config.xml
+	log4j:WARN No appenders could be found for logger (org.apache.commons.digester.Digester.sax).
+	log4j:WARN Please initialize the log4j system properly.
+	INFO: Reading config : jar:file:/C:/Users/zotyi/.m2/repository/org/apache/openwebbeans/openwebbeans-jsf/2.0.27/openwebbeans-jsf-2.0.27-jakarta.jar!/META-INF/faces-config.xml
+	INFO: Reading config : jar:file:/C:/Users/zotyi/.m2/repository/org/apache/openwebbeans/openwebbeans-el22/2.0.27/openwebbeans-el22-2.0.27-jakarta.jar!/META-INF/faces-config.xml
+	INFO: Artifact 'myfaces-api' was found in version '3.0.2' from path 'file:/C:/Users/zotyi/.m2/repository/org/apache/myfaces/core/myfaces-api/3.0.2/myfaces-api-3.0.2.jar'
+	INFO: Artifact 'myfaces-impl' was found in version '3.0.2' from path 'file:/C:/Users/zotyi/.m2/repository/org/apache/myfaces/core/myfaces-impl/3.0.2/myfaces-impl-3.0.2.jar'
+	INFO: MyFaces Core CDI support enabled
+	INFO: Using InjectionProvider org.apache.myfaces.spi.impl.CDIAnnotationDelegateInjectionProvider
+	INFO: MyFaces Core Bean Validation support enabled
+	INFO: Couldn't discover the current project stage, using Production
+	INFO: Serialization provider : class org.apache.myfaces.shared_impl.util.serial.DefaultSerialFactory
+	INFO: Using LifecycleProvider org.apache.myfaces.config.annotation.Tomcat7AnnotationLifecycleProvider
+	INFO: ServletContext initialized.
+	INFO: org.apache.myfaces.CACHE_EL_EXPRESSIONS web config parameter is set to "noCache". To enable view pooling this param must be set to "alwaysRecompile". View Pooling disabled.
+	INFO: MyFaces Core has started, it took [1505] ms.
+	INFO: INSERT INTO User (id, name) VALUES (1, TomEE) --> 0ms
+	INFO: INSERT INTO User (id, name) VALUES (2, Old) --> 0ms
+	INFO: SELECT COUNT(t0.id) FROM User t0 --> 3ms
+	INFO: UPDATE User SET name = OpenEJB WHERE id = 2 --> 2ms
+	INFO: Undeploying app: C:\Users\zotyi\Documents\NetBeansProjects\tomee\examples\arquillian-jpa\target\arquillian-test-working-dir\0\UserPersistenceTest
+	Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.775 s - in org.superbiz.arquillian.test.persistence.PersistenceTest
+	INFO: Stopping ProtocolHandler ["http-nio-49324"]
+	INFO: Pausing ProtocolHandler ["http-nio-49324"]
+	INFO: Stopping service [Tomcat]
+	INFO: Closing DataSource: demoDataSource
+	INFO: Closing DataSource: demoDataSourceNonJta
+	INFO: Destroying ProtocolHandler ["http-nio-49324"]
+	
+	Results:
+	
+	Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+```
